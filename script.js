@@ -49,3 +49,80 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(section);
   });
 });
+
+// Lightbox functionality
+document.addEventListener("DOMContentLoaded", function () {
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImage = document.getElementById("lightbox-image");
+  const closeBtn = document.getElementById("lightbox-close");
+  const zoomInBtn = document.getElementById("zoom-in");
+  const zoomOutBtn = document.getElementById("zoom-out");
+  const resetBtn = document.getElementById("zoom-reset");
+
+  let currentScale = 1;
+
+  // Function to open lightbox
+  function openLightbox(src) {
+    lightboxImage.src = src;
+    lightbox.style.display = "flex";
+    currentScale = 1;
+    lightboxImage.style.transform = `scale(${currentScale})`;
+  }
+
+  // Function to close lightbox
+  function closeLightbox() {
+    lightbox.style.display = "none";
+  }
+
+  // Add click event to all images
+  document.querySelectorAll("img").forEach(img => {
+    img.addEventListener("click", function () {
+      openLightbox(this.src);
+    });
+  });
+
+  // Close lightbox when clicking close button
+  closeBtn.addEventListener("click", closeLightbox);
+
+  // Close lightbox when clicking outside the image
+  lightbox.addEventListener("click", function (e) {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Zoom in
+  zoomInBtn.addEventListener("click", function () {
+    currentScale += 0.2;
+    lightboxImage.style.transform = `scale(${currentScale})`;
+  });
+
+  // Zoom out
+  zoomOutBtn.addEventListener("click", function () {
+    if (currentScale > 0.2) {
+      currentScale -= 0.2;
+      lightboxImage.style.transform = `scale(${currentScale})`;
+    }
+  });
+
+  // Reset zoom
+  resetBtn.addEventListener("click", function () {
+    currentScale = 1;
+    lightboxImage.style.transform = `scale(${currentScale})`;
+  });
+
+  // Keyboard controls
+  document.addEventListener("keydown", function (e) {
+    if (lightbox.style.display === "flex") {
+      if (e.key === "Escape") {
+        closeLightbox();
+      } else if (e.key === "+" || e.key === "=") {
+        zoomInBtn.click();
+      } else if (e.key === "-") {
+        zoomOutBtn.click();
+      } else if (e.key === "0") {
+        resetBtn.click();
+      }
+    }
+  });
+});
