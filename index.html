@@ -12,465 +12,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://sirxemic.github.io/jquery.ripples/jquery.ripples.min.js"></script>
-   <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+   <link rel="icon" href="logo.jpg" type="image/x-icon">
 
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
+  <link rel="stylesheet" href="styles.css">
 
-    :root {
-      --main-bg: #ffffff;
-      --accent: #a8e6a3;
-      --text-dark: #000000;
-      --text-light: #555555;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      background-color: var(--main-bg);
-      color: var(--text-dark);
-      line-height: 1.6;
-    }
-
-    .theme-menu {
-      background-color: #05c91fd7;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 1001;
-    }
-
-    .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 40px;
-    background-color: rgb(9, 235, 159);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-
-  .logo-img {
-    height: 50px;
-    width: auto;
-  }
-
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-dark);
-      font-weight: 500;
-    }
-.navbar a {
-  color: rgb(52, 19, 235);
-  font-weight: 600;
-  font-size: 1.1rem;
-  text-decoration: none;
-  padding: 0.5rem 0.8rem;
-  transition: background-color 0.3s ease;
-}
-
-    .navbar a:hover,
-.navbar a.active {
-  background: rgba(50, 8, 235, 0.281);
-  border-radius: 6px;
-}
-
- .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    /* Hero section style */
-    .hero-section {
-    position: relative;
-    height: 400px;
-    background: url(images/download\ \(3\).jfif) no-repeat center center/cover;
-    background-size: cover;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: 700;
-    z-index: 1;
-    overflow: hidden;
-  }
-
-  .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(-45deg, rgba(0, 255, 150, 0.8), rgba(90, 148, 236, 0.9), rgba(0, 255, 150, 0.8));
-    background-size: 600% 600%;
-    animation: gradientShift 15s ease infinite;
-    z-index: 0;
-  }
-
-  @keyframes gradientShift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
-    padding: 0 1rem;
-  }
-
-  .animate-fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 1s ease-out forwards;
-  }
-
-  .animate-fade-in-delay {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 1s ease-out forwards;
-    animation-delay: 0.4s;
-  }
-
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  .cta-button {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 15px 40px;
-  background-color: black;
-  color: white;
-  font-weight: 600;
-  font-size: 1.1rem;
-  text-decoration: none;
-  border-radius: 30px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.cta-button:hover {
-  background-color: #222;
-  transform: scale(1.05);
-}
-
-
-    section {
-      padding: 4rem 2rem;
-    }
-
-    .about, .products, .testimonials, .contact {
-      text-align: center;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .product-card {
-      border: 1px solid #ddd;
-      padding: 1rem;
-      border-radius: 8px;
-      transition: transform 0.3s, opacity 1s ease-in;
-      background-color: #f9f9f9;
-      opacity: 0;
-    }
-
-    .product-card.fade-in {
-      opacity: 1;
-    }
-
-    .product-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .product-card img {
-      width: 100%;
-      height: auto;
-      border-radius: 5px;
-    }
-
-    .testimonial-slider {
-      display: flex;
-      justify-content: center;
-      position: relative;
-      height: 100px;
-      overflow: hidden;
-    }
-
-    .testimonial {
-      opacity: 0;
-      position: absolute;
-      transition: opacity 0.5s;
-      font-style: italic;
-      color: var(--text-light);
-    }
-
-    .testimonial.active {
-      opacity: 1;
-      position: relative;
-    }
-
-    .newsletter-form input[type="email"] {
-      padding: 0.5rem;
-      width: 250px;
-      max-width: 90%;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      margin-right: 0.5rem;
-    }
-
-    .newsletter-form button {
-      padding: 0.5rem 1rem;
-      background-color: var(--accent);
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-   footer {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    padding: 40px 0;
-  }
-
-  .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px;
-  }
-
-  .footer-column h4 {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    color: #111;
-  }
-
-  .footer-column ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .footer-column ul li {
-    margin-bottom: 10px;
-  }
-
-  .footer-column ul li a {
-    color: #555;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  .footer-column ul li a:hover {
-    color: #21D192;
-  }
-
-  .footer-social {
-    display: flex;
-    gap: 15px;
-    margin-top: 10px;
-  }
-
-  .footer-social a {
-    font-size: 1.2rem;
-    color: #21D192;
-    transition: transform 0.3s ease;
-  }
-
-  .footer-social a:hover {
-    transform: scale(1.2);
-  }
-
-  .footer-bottom {
-    text-align: center;
-    padding: 20px;
-    background-color: #e0e0e0;
-    margin-top: 30px;
-    font-size: 0.9rem;
-  }
-   .fade-in {
-    opacity: 1 !important;
-    transition: opacity 1.2s ease-in-out;
-  }
-
-  .opacity-0 {
-    opacity: 0;
-  } 
-
-    .contact-area {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .contact-icon i {
-      font-size: 1.5rem;
-      color: var(--accent);
-    }
-
-    .contact-info .title {
-      font-weight: bold;
-    }
-
-    .contact-info .text {
-      color: var(--text-light);
-    }
-
-    .av-btn-bubble {
-      position: relative;
-      background-color: var(--accent);
-      color: var(--text-dark);
-      padding: 0.5rem 1.2rem;
-      border-radius: 30px;
-      text-decoration: none;
-      display: inline-block;
-      overflow: hidden;
-    }
-
-    .bubble_effect .circle {
-      position: absolute;
-      border-radius: 50%;
-      background-color: rgba(0,0,0,0.1);
-      width: 10px;
-      height: 10px;
-      animation: bubble 3s infinite ease-in-out;
-    }
-
-    .bubble_effect .top-left {
-      top: 0;
-      left: 0;
-    }
-
-    .bubble_effect .bottom-right {
-      bottom: 0;
-      right: 0;
-    }
-
-    @keyframes bubble {
-      0% { transform: scale(1); opacity: 1; }
-      100% { transform: scale(3); opacity: 0; }
-    }
-     .image-slider {
-    max-width: 100%;
-    overflow: hidden;
-    position: relative;
-    margin: 50px auto;
-  }
-
-  .slider-track {
-    display: flex;
-    animation: slide 20s linear infinite;
-    gap: 30px;
-  }
-
-  .slider-track img {
-    max-height: 250px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.5s;
-  }
-
-  .slider-track img:hover {
-    transform: scale(1.05);
-  }
-
-  @keyframes slide {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  </style>
-  <script>
-    // Testimonial Slider
-    document.addEventListener("DOMContentLoaded", () => {
-      const testimonials = document.querySelectorAll(".testimonial");
-      let index = 0;
-
-      setInterval(() => {
-        testimonials[index].classList.remove("active");
-        index = (index + 1) % testimonials.length;
-        testimonials[index].classList.add("active");
-      }, 4000);
-
-      // Image fade-in on scroll
-      const fadeElements = document.querySelectorAll('.product-card');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.1
-      });
-
-      fadeElements.forEach(el => observer.observe(el));
-    });
-    //ripples
-      $(document).ready(function() {
-      $('#hero').ripples({
-        resolution: 512,
-        dropRadius: 20,
-        perturbance: 0.04,
-        interactive: true,
-      });
-    });
-    //footer
-     // Fade in footer sections when they scroll into view
-  document.addEventListener("DOMContentLoaded", function () {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("fade-in");
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll("footer section").forEach(section => {
-      section.classList.add("opacity-0");
-      observer.observe(section);
-    });
-  });
-  </script>
 </head>
 <body>
 
@@ -534,15 +79,11 @@
     </div>
   </div>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-
-
   <!-- Navigation -->
 <header class="navbar">
   <div class="navbar-left">
     <a href="#">
-      <img src="images/ACKNOM LOGO.png" alt="AKNOM Logo" class="logo-img">
+      <img src="ACKNOM LOGO.png" alt="AKNOM Logo" class="logo-img">
     </a>
   </div>
     <nav>
@@ -556,12 +97,7 @@
     </nav>
   </header>
 
- 
-  
-
-</head>
-<body>
- <!-- Hero Section Start -->
+  <!-- Hero Section Start -->
 <section class="hero-section" id="hero">
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -584,47 +120,47 @@
     <h2>Our Products</h2>
     <div class="product-grid">
       <div class="product-card">
-        <img src="images/download (1).jfif" alt="Bag 1">
+        <img src="download (1).jfif" alt="Bag 1">
         <h3>Urban Backpack</h3>
       </div>
       <div class="product-card">
-        <img src="images/download (2).jfif" alt="Bag 2">
+        <img src="download (2).jfif" alt="Bag 2">
         <h3>Classic Handbag</h3>
       </div>
       <div class="product-card">
-        <img src="images/download (3).jfif" alt="Bag 3">
+        <img src="download (3).jfif" alt="Bag 3">
         <h3>Travel Duffle</h3>
       </div>
         <div class="product-card">
-        <img src="images/bag 1.jpg" alt="Bag 3">
+        <img src="bag 1.jpg" alt="Bag 3">
         <h3>Acknom hand bag</h3>
       </div>
         <div class="product-card">
-        <img src="images/bag 2.jpg" alt="Bag 3">
+        <img src="bag 2.jpg" alt="Bag 3">
         <h3>Acknom Bags</h3>
       </div>
         <div class="product-card">
-        <img src="images/bag 4.jpg" alt="Bag 3">
+        <img src="bag 4.jpg" alt="Bag 3">
         <h3>Acknom bags</h3>
       </div>
         <div class="product-card">
-        <img src="images/bag 5.jpg" alt="Bag 3">
+        <img src="bag 5.jpg" alt="Bag 3">
         <h3>Acknom bags</h3>
       </div>
        <div class="product-card">
-        <img src="images/bag 3.jpg" alt="Bag 3">
+        <img src="bag 3.jpg" alt="Bag 3">
         <h3>Acknom bags</h3>
       </div>
       <div class="product-card">
-        <img src="images/furniture 1.jpg" alt="Bag 3">
+        <img src="furniture 1.jpg" alt="Bag 3">
         <h3>Acknom furniture</h3>
       </div>
        <div class="product-card">
-        <img src="images/furniture 2.jpg" alt="Bag 3">
+        <img src="furniture 2.jpg" alt="Bag 3">
         <h3>Acknom furniture</h3>
       </div>
        <div class="product-card">
-        <img src="images/furniture 3.jpg" alt="Bag 3">
+        <img src="furniture 3.jpg" alt="Bag 3">
         <h3>Acknom furniture</h3>
       </div>
     </div>
@@ -641,17 +177,17 @@
   </section>
 <div class="image-slider">
   <div class="slider-track">
-    <img src="images/download (1).jfif" alt="acknom bags">
-    <img src="images/download (2).jfif" alt="acknom bags">
-    <img src="images/download (3).jfif" alt="acknom bags">
-    <img src="images/download (4).jfif" alt="acknom bags">
-    <img src="images/download (5).jfif" alt="acknom bags">
-    <img src="images/download.jfif" alt="acknom bags">
-    <img src="images/bag 2.jpg" alt="acknom bags">
-    <img src="images/bag 1.jpg" alt="acknom bags">
-    <img src="images/furniture 1.jpg" alt="acknom furniture">
-    <img src="images/furniture 2.jpg" alt="acknom furniture">
-    <img src="images/furniture 3.jpg" alt="acknom furniture">
+    <img src="download (1).jfif" alt="acknom bags">
+    <img src="download (2).jfif" alt="acknom bags">
+    <img src="download (3).jfif" alt="acknom bags">
+    <img src="download (4).jfif" alt="acknom bags">
+    <img src="download (5).jfif" alt="acknom bags">
+    <img src="download.jfif" alt="acknom bags">
+    <img src="bag 2.jpg" alt="acknom bags">
+    <img src="bag 1.jpg" alt="acknom bags">
+    <img src="furniture 1.jpg" alt="acknom furniture">
+    <img src="furniture 2.jpg" alt="acknom furniture">
+    <img src="furniture 3.jpg" alt="acknom furniture">
   </div>
 </div>
 
@@ -712,6 +248,6 @@
   </div>
 </footer>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="script.js"></script>
 </body>
 </html>
